@@ -36,22 +36,9 @@
     transform: rotate(360deg);
   }
 }
-.container{
-  /* border: 2px solid red; */
-  width: 100%;
-  margin: 0px 3px 0px 3px;
-  padding: 5px;
-}
-.nav-bar{
-  display: flex;
-  
-}
-.nav-item{
-  margin-left: 100px;
-  list-style-type: none;
-  cursor: pointer;
-  font-size: 1.3rem;
-  font-weight:bold;
-  color: #3878f7;
 
+
+.container{
+  align-items: center;
+  margin-top: 3rem;
 }
