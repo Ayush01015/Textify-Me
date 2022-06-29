@@ -9,9 +9,9 @@ import TextForm from "./components/textForm.js";
 function App() {
   return (
     <>
-    <Navbar title="TextUtils" aboutText="About" />
+    <Navbar title="Textify" aboutText="About" />
     <div className="container">
-      <TextForm text="here is your text" heading="Enter the Text to analyse"/>
+      <TextForm text="here is your text" heading="Enter the Text to analyse" textSummary="Your Text Summary"/>
     </div>
     </>
     
