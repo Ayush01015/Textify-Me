@@ -15,7 +15,7 @@ export default function TextForm(props) {
     setText(e.target.value);
     // console.log(e.target.value);
   };
-  const [text, setText] = useState("Enter text here");
+  const [text, setText] = useState("");
   // setText="ayush"; //wrong
   // setText("Ayush");
 
@@ -27,36 +27,37 @@ export default function TextForm(props) {
           <textarea
             value={text}
             onChange={handleOnChange}
-            className="form-control my-3 "
+            className="form-control-2 my-3 "
             id="myBox"
-            rows="8"
+            rows="13"
           ></textarea>
-          <button
-            type="button"
-            onClick={handleUpClick}
-            className="btn btn-primary mx-2"
-          >
-            Convert to UpperCase
-          </button>
-          <button
-            type="button"
-            onClick={handleLoClick}
-            className="btn btn-primary"
-          >
-            Convert to LowerCase
-          </button>
+          <div className="container-flex">
+            <button
+              type="button"
+              onClick={handleUpClick}
+              className="btn btn-primary my-2"
+            >
+              Convert to UpperCase
+            </button>
+            <button
+              type="button"
+              onClick={handleLoClick}
+              className="btn btn-primary my-2"
+            >
+              Convert to LowerCase
+            </button>
+          </div>
         </div>
+
         <div className="container">
           <h1 className="gradient-text">{props.textSummary}</h1>
           <p>
-            {text.split(" ").length-1} Words & {text.length} Characters
+            {text.split(" ").length} Words & {text.length} Characters
           </p>
-          <p>
-            {0.008*text.split(" ").length-1} Minutes Read
-          </p>
+          <p>{0.008 * text.split(" ").length} Minutes Read</p>
           <h2 className="gradient-text">Preview</h2>
           <div className="conteiner-2">
-          <p>{text}</p>
+            <p>{text}</p>
           </div>
         </div>
       </>
