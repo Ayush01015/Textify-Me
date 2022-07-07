@@ -1,23 +1,34 @@
 // import logo from "./logo.svg";
+import { useState } from "react";
 import "./App.css";
 // import Comment from "./components/Comment.js";
-import Navbar from "./components/Navbar.js"
+import Navbar from "./components/Navbar.js" 
 import TextForm from "./components/textForm.js";
-
-
+// import About from "./components/About";
+ 
 
 function App() {
+  const [mode,setMode]=useState("light");
+
+  const toogleMode=()=>{
+    if(mode==="light"){
+      setMode('dark')
+      document.body.style.backgroundColor="black";
+    }else{
+      setMode('light')  
+      document.body.style.backgroundColor="white";
+    }
+  } 
   return (
     <>
-    <Navbar title="Textify" aboutText="About" />
+    <Navbar title="Textify" aboutText="About" mode={mode} toogleMode={toogleMode} />
     <div className="container">
-      <TextForm text="here is your text" heading="Enter the Text to analyse" textSummary="Your Text Summary"/>
+      <TextForm text="here is your text" heading="Enter the Text to analyse" textSummary="Your Text Summary"  mode={mode} />
+      {/* <About /> */}
     </div>
-    </>
-    
+    </>    
   );
 }
-
 
 export default App;
 

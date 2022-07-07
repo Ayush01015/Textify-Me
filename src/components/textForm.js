@@ -6,7 +6,7 @@ export default function TextForm(props) {
     let newText = text.toUpperCase();
     setText(newText);
   };
-  const handleLoClick = () => {
+  const handleLowClick = () => {
     // console.log("UpperCase was Clicked" + text);
     let newText = text.toLowerCase();
     setText(newText);
@@ -14,6 +14,15 @@ export default function TextForm(props) {
   const handleOnChange = (e) => {
     setText(e.target.value);
     // console.log(e.target.value);
+  };
+  const handleOnClear = () => {
+    let newtext = "";
+    setText(newtext);
+  };
+  const handleOnCopy = (e) => {
+    let text=document.getElementById("myBox");
+    text.select();
+    navigator.clipboard.writeText(text.value);
   };
   const [text, setText] = useState("");
   // setText="ayush"; //wrong
@@ -27,7 +36,7 @@ export default function TextForm(props) {
           <textarea
             value={text}
             onChange={handleOnChange}
-            className="form-control-2 my-3 "
+            className="form-control-2 my-3 text-con"
             id="myBox"
             rows="13"
           ></textarea>
@@ -35,32 +44,69 @@ export default function TextForm(props) {
             <button
               type="button"
               onClick={handleUpClick}
-              className="btn btn-primary my-2"
+              className="btn btn-primary my-2 my-btn"
             >
               Convert to UpperCase
             </button>
             <button
               type="button"
-              onClick={handleLoClick}
-              className="btn btn-primary my-2"
+              onClick={handleLowClick}
+              className="btn btn-primary my-2 my-btn"
             >
               Convert to LowerCase
+            </button>
+            <button
+              type="button"
+              onClick={handleOnClear}
+              className="btn btn-primary my-2 my-btn"
+            >
+              Clear
+            </button>
+            <button
+              type="button"
+              onClick={handleOnCopy}
+              className="btn btn-primary my-2 my-btn"
+            >
+              Copy
             </button>
           </div>
         </div>
 
         <div className="container">
           <h1 className="gradient-text">{props.textSummary}</h1>
-          <p>
+          <p
+            style={{
+              color: props.mode === "light" ? "black" : "white",
+            }}
+          >
             {text.split(" ").length} Words & {text.length} Characters
           </p>
-          <p>{0.008 * text.split(" ").length} Minutes Read</p>
+          <p
+            style={{
+              color: props.mode === "light" ? "black" : "white",
+            }}
+          >
+            {0.008 * text.split(" ").length} Minutes Read
+          </p>
           <h2 className="gradient-text">Preview</h2>
-          <div className="conteiner-2">
-            <p>{text}</p>
+          <div className="container-2">
+            <p
+              style={{
+                color: props.mode === "light" ? "black" : "white",
+              }}
+            >
+              {text}
+            </p>
           </div>
         </div>
       </>
     </div>
   );
 }
+
+TextForm.defaultProps = {
+  //deaultProps
+  title: "put title",
+  aboutText: "About",
+  mode:"dark"
+};

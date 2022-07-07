@@ -1,9 +1,9 @@
 import React from "react";
 import Proptypes from "prop-types";
-
+// str.charAt(0).toUpperCase() + str.slice(1)
 export default function Navbar(props) {
   return (
-    <nav className="navbar navbar-expand-lg bg-secondary text-m myNav">
+    <nav className={`navbar navbar-expand-lg bg-secondary navbar-${props.mode} bg-${props.mode}`}>
       <div className="container-fluid">
         <a className="navbar-brand" href="/">
           {props.title}
@@ -64,7 +64,7 @@ export default function Navbar(props) {
               </ul>
             </li>
           </ul>
-          <form className="d-flex" role="search">
+          {/* <form className="d-flex" role="search">
             <input
               className="form-control me-2"
               type="search"
@@ -74,7 +74,11 @@ export default function Navbar(props) {
             <button className="btn btn-success" type="submit">
               Search
             </button>
-          </form>
+          </form> */}
+          <div className={`form-check form-switch text-${(props.mode==='light')?'dark':'light'}`}>  
+          <input className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" onClick={props.toogleMode} />
+          <label className="form-check-label" htmlFor="flexSwitchCheckDefault">{`${props.mode} Mode`}</label>
+        </div>
         </div>
       </div>
     </nav>
@@ -91,6 +95,7 @@ Navbar.defaultProps = {
   //deaultProps
   title: "put title",
   aboutText: "About",
+  mode:"dark"
 };
 
 //example from docs
@@ -125,3 +130,4 @@ Navbar.defaultProps = {
 //   },
 //   text: "default Text"
 // }
+
