@@ -1,6 +1,6 @@
 import React from "react";
 import Proptypes from "prop-types";
-// str.charAt(0).toUpperCase() + str.slice(1)
+
 export default function Navbar(props) {
   return (
     <nav className={`navbar navbar-expand-lg bg-secondary navbar-${props.mode} bg-${props.mode}`}>
@@ -64,20 +64,10 @@ export default function Navbar(props) {
               </ul>
             </li>
           </ul>
-          {/* <form className="d-flex" role="search">
-            <input
-              className="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button className="btn btn-success" type="submit">
-              Search
-            </button>
-          </form> */}
+          
           <div className={`form-check form-switch text-${(props.mode==='light')?'dark':'light'}`}>  
           <input className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" onClick={props.toogleMode} />
-          <label className="form-check-label" htmlFor="flexSwitchCheckDefault">{`${props.mode} Mode`}</label>
+          <label className="form-check-label" htmlFor="flexSwitchCheckDefault">{`${props.capitalize(props.mode)} Mode`}</label>
         </div>
         </div>
       </div>

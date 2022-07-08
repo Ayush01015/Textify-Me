@@ -24,6 +24,11 @@ export default function TextForm(props) {
     text.select();
     navigator.clipboard.writeText(text.value);
   };
+  const handleOnExtraScapes=()=>{
+    let newText=text.split(/[ ]+/);
+    setText(newText.join(" "));
+    console.log(text);
+  }
   const [text, setText] = useState("");
   // setText="ayush"; //wrong
   // setText("Ayush");
@@ -60,14 +65,21 @@ export default function TextForm(props) {
               onClick={handleOnClear}
               className="btn btn-primary my-2 my-btn"
             >
-              Clear
+              Clear Text
             </button>
             <button
               type="button"
               onClick={handleOnCopy}
               className="btn btn-primary my-2 my-btn"
             >
-              Copy
+              Copy Text
+            </button>
+            <button
+              type="button"
+              onClick={handleOnExtraScapes}
+              className="btn btn-primary my-2 my-btn"
+            >
+              Remove Extra Spaces
             </button>
           </div>
         </div>
