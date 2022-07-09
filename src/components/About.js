@@ -1,8 +1,4 @@
-import React,{useState} from "react";
-
 export default function About(props) {
-const [blindMode, setBlindMode] = useState("blindOff");
-
  let myStyle={
     backgroundColor:
     props.blindMode==="blindOn"

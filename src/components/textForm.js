@@ -2,20 +2,20 @@ import React from "react";
 import { useState } from "react";
 export default function TextForm(props) {
   const handleUpClick = () => {
-    // console.log("UpperCase was Clicked" + text);
+
     let newText = text.toUpperCase();
     setText(newText);
     props.showAlert("Converted to UpperCase", "success");
   };
   const handleLowClick = () => {
-    // console.log("UpperCase was Clicked" + text);
+
     let newText = text.toLowerCase();
     setText(newText);
     props.showAlert("Converted to LowerCase", "success");
   };
   const handleOnChange = (e) => {
     setText(e.target.value);
-    // console.log(e.target.value);
+
   };
   const handleOnClear = () => {
     let newtext = "";
@@ -23,9 +23,7 @@ export default function TextForm(props) {
     props.showAlert("Text Cleared", "success");
   };
   const handleOnCopy = (e) => {
-    let text = document.getElementById("myBox");
-    text.select();
-    navigator.clipboard.writeText(text.value);
+    navigator.clipboard.writeText(text);
     props.showAlert("Text Copied", "success");
   };
   const handleOnExtraScapes = () => {
@@ -35,16 +33,18 @@ export default function TextForm(props) {
     props.showAlert("Extra Spaces Removed", "success");
   };
   const [text, setText] = useState("");
-  // setText="ayush"; //wrong
-  // setText("Ayush");
 
   return (
     <div>
       <>
         <div className="container">
-          <h1 className={`gradient-${
+          <h1
+            className={`gradient-${
               props.blindMode === "blindOn" ? "blind" : "text"
-            }`}>{props.heading}</h1>
+            }`}
+          >
+            {props.heading}
+          </h1>
           <textarea
             value={text}
             onChange={handleOnChange}
@@ -54,57 +54,71 @@ export default function TextForm(props) {
             placeholder="Enter Your Text"
             style={{
               backgroundColor:
-              props.blindMode==="blindOn"
-                ? "#FF1700"
-                : props.mode==="light"
-                ? "#F5EDDC"
-                :props.mode==="dark"
-                ? "#1B2430"
-                : "white"
-                ,
-                color:
-                props.blindMode==="blindOn"
+                props.blindMode === "blindOn"
+                  ? "#FF1700"
+                  : props.mode === "light"
+                  ? "#F5EDDC"
+                  : props.mode === "dark"
+                  ? "#1B2430"
+                  : "white",
+              color:
+                props.blindMode === "blindOn"
                   ? "#FBFF00"
-                  : props.mode==="light"
+                  : props.mode === "light"
                   ? "black"
-                  :props.mode==="dark"
+                  : props.mode === "dark"
                   ? "white"
-                  : "black"
+                  : "black",
             }}
           ></textarea>
           <div className="container-flex">
             <button
+              disabled={text.length === 0}
               type="button"
               onClick={handleUpClick}
-              className={`btn btn-${props.blindMode==="blindOn"?"warning":"primary"} my-2 my-1 my-btn`}
+              className={`btn btn-${
+                props.blindMode === "blindOn" ? "warning" : "primary"
+              } my-2 my-1 my-btn`}
             >
               Convert to UpperCase
             </button>
             <button
+              disabled={text.length === 0}
               type="button"
               onClick={handleLowClick}
-              className={`btn btn-${props.blindMode==="blindOn"?"warning":"primary"} my-2 my-1 my-btn`}
+              className={`btn btn-${
+                props.blindMode === "blindOn" ? "warning" : "primary"
+              } my-2 my-1 my-btn`}
             >
               Convert to LowerCase
             </button>
             <button
+              disabled={text.length === 0}
               type="button"
               onClick={handleOnClear}
-              className={`btn btn-${props.blindMode==="blindOn"?"warning":"primary"} my-2 my-1 my-btn`}
+              className={`btn btn-${
+                props.blindMode === "blindOn" ? "warning" : "primary"
+              } my-2 my-1 my-btn`}
             >
               Clear Text
             </button>
             <button
+              disabled={text.length === 0}
               type="button"
               onClick={handleOnCopy}
-              className={`btn btn-${props.blindMode==="blindOn"?"warning":"primary"} my-2 my-1 my-btn`}
+              className={`btn btn-${
+                props.blindMode === "blindOn" ? "warning" : "primary"
+              } my-2 my-1 my-btn`}
             >
               Copy Text
             </button>
             <button
+              disabled={text.length === 0}
               type="button"
               onClick={handleOnExtraScapes}
-              className={`btn btn-${props.blindMode==="blindOn"?"warning":"primary"} my-2 my-1 my-btn`}
+              className={`btn btn-${
+                props.blindMode === "blindOn" ? "warning" : "primary"
+              } my-2 my-1 my-btn`}
             >
               Remove Extra Spaces
             </button>
@@ -121,56 +135,63 @@ export default function TextForm(props) {
           </h1>
           <p
             style={{
-                color:
-                props.blindMode==="blindOn"
+              color:
+                props.blindMode === "blindOn"
                   ? "#FBFF00"
-                  : props.mode==="light"
+                  : props.mode === "light"
                   ? "black"
-                  :props.mode==="dark"
+                  : props.mode === "dark"
                   ? "white"
-                  : "black"
+                  : "black",
             }}
           >
-            {`${text.split(" ").filter((ele)=>{return ele.length!==0}).length} Words & ${text.length} Characters` }
-          </p>  
+            {`${
+              text.split(/\s+/).filter((ele) => {
+                return ele.length !== 0;
+              }).length
+            } Words & ${text.length} Characters`}
+          </p>
           <p
             style={{
               color:
-              props.blindMode==="blindOn"
-                ? "#FBFF00"
-                : props.mode==="light"
-                ? "black"
-                :props.mode==="dark"
-                ? "white"
-                : "black"
-          }}  
+                props.blindMode === "blindOn"
+                  ? "#FBFF00"
+                  : props.mode === "light"
+                  ? "black"
+                  : props.mode === "dark"
+                  ? "white"
+                  : "black",
+            }}
           >
-            {0.008 * text.split(" ").filter((ele)=>{return ele.length!==0}).length} Minutes Read
+            {0.008 *
+              text.split(" ").filter((ele) => {
+                return ele.length !== 0;
+              }).length}{" "}
+            Minutes Read
           </p>
           <h2 className="gradient-text">Preview</h2>
           <div
             className="container-2"
             style={{
               backgroundColor:
-              props.blindMode==="blindOn"
-                ? "#FF1700"
-                : props.mode==="light"
-                ? "#F5EDDC"
-                :props.mode==="dark"
-                ? "#1B2430"
-                : "white"
-                ,
-                color:
-                props.blindMode==="blindOn"
+                props.blindMode === "blindOn"
+                  ? "#FF1700"
+                  : props.mode === "light"
+                  ? "#F5EDDC"
+                  : props.mode === "dark"
+                  ? "#1B2430"
+                  : "white",
+              color:
+                props.blindMode === "blindOn"
                   ? "#FBFF00"
-                  : props.mode==="light"
+                  : props.mode === "light"
                   ? "black"
-                  :props.mode==="dark"
+                  : props.mode === "dark"
                   ? "white"
-                  : "black"
+                  : "black",
             }}
           >
-            <p>{text}</p>
+            <p>{text.length>0?text:"Nothing to Preview"}</p>
           </div>
         </div>
       </>
