@@ -94,3 +94,23 @@ h1{
   border: 1px solid #C5097C;
 
 } 
+.my-blind{
+  margin-right: 20px;
+}
+.text-blind{
+  color:white;
+}
+.text-noBlind{
+  color:black;
+}
+.navbar-blind{
+  background-color: orange;
+}
+.navbar-no-blind{
+  background-color: white;
+}
+.gradient-blind{
+  background-image: linear-gradient(60deg, #FED54A , #FF9347);
+  background-clip: text;
+  color: transparent;
+} 

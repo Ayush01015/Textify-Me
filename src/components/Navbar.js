@@ -3,7 +3,9 @@ import Proptypes from "prop-types";
 
 export default function Navbar(props) {
   return (
-    <nav className={`navbar navbar-expand-lg bg-secondary navbar-${props.mode} bg-${props.mode}`}>
+    <nav
+      className={`navbar navbar-expand-lg navbar-${props.blindMode==="blindOn"?"blind":props.mode==="dark"?"dark" :"light"}` }
+    >
       <div className="container-fluid">
         <a className="navbar-brand" href="/">
           {props.title}
@@ -64,11 +66,44 @@ export default function Navbar(props) {
               </ul>
             </li>
           </ul>
-          
-          <div className={`form-check form-switch text-${(props.mode==='light')?'dark':'light'}`}>  
-          <input className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" onClick={props.toogleMode} />
-          <label className="form-check-label" htmlFor="flexSwitchCheckDefault">{`${props.capitalize(props.mode)} Mode`}</label>
-        </div>
+
+          <div
+            className={`my-blind form-check form-switch text-${props.mode==="dark"?"blind":"noBlind"}`}
+          >
+            <input
+              className="form-check-input"
+              type="checkbox"
+              role="switch"
+              id="flexSwitchCheckDefault"
+              onClick={props.toogleBlindMode}
+            />
+            <label
+              className="form-check-label"
+              htmlFor="flexSwitchCheckDefault"
+            >{`${props.capitalize(props.blindMode.slice(0,5))} Mode`}</label>
+          </div>
+
+          <div
+            className={`form-check form-switch text-${
+              props.mode === "light" ? "dark" : "light"
+            }`}
+          >
+            <input
+              className="form-check-input"
+              type="checkbox"
+              role="switch"
+              id="flexSwitchCheckDefault"
+              onClick={props.toogleMode}
+            />
+            <label
+              className="form-check-label"
+              htmlFor="flexSwitchCheckDefault"
+            >{`${
+              props.mode === "light" || props.mode === "dark"
+                ? props.capitalize(props.mode)
+                : "Dark2"
+            } Mode`}</label>
+          </div>
         </div>
       </div>
     </nav>
@@ -85,7 +120,7 @@ Navbar.defaultProps = {
   //deaultProps
   title: "put title",
   aboutText: "About",
-  mode:"dark"
+  mode: "dark",
 };
 
 //example from docs
@@ -120,4 +155,3 @@ Navbar.defaultProps = {
 //   },
 //   text: "default Text"
 // }
-
