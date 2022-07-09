@@ -99,9 +99,9 @@ export default function Navbar(props) {
               className="form-check-label"
               htmlFor="flexSwitchCheckDefault"
             >{`${
-              props.mode === "light" || props.mode === "dark"
-                ? props.capitalize(props.mode)
-                : "Dark2"
+              props.mode === "light"
+                ? "Dark"
+                : "Light"
             } Mode`}</label>
           </div>
         </div>

@@ -131,8 +131,8 @@ export default function TextForm(props) {
                   : "black"
             }}
           >
-            {text.split(" ").length} Words & {text.length} Characters
-          </p>
+            {`${text.split(" ").length} Words & ${text.length} Characters` }
+          </p>  
           <p
             style={{
               color:
