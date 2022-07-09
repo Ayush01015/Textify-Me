@@ -4,9 +4,9 @@ import "./App.css";
 // import Comment from "./components/Comment.js";
 import Navbar from "./components/Navbar.js";
 import TextForm from "./components/textForm.js";
-// import About from "./components/About";
+import About from "./components/About";
 import Alert from "./components/Alert.js";
-// import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   const [mode, setMode] = useState("light");
@@ -57,7 +57,7 @@ function App() {
 
   return (
     <>
-      {/* <Router> */}
+      <Router>
         <Navbar
           title="Textify"
           aboutText="About"
@@ -69,9 +69,9 @@ function App() {
         />
         <Alert alert={alert} capitalize={capitalize} />
         <div className="container">
-          {/* <Routes> */}
-            {/* <Route exact path="/about" element={<About />} /> */}
-            {/* <Route
+          <Routes>
+            <Route exact path="/about" element={<About mode={mode} blindMode={blindMode} toogleBlindMode={toogleBlindMode}/>} />
+            <Route
               exact
               path="/"
               element={
@@ -88,20 +88,9 @@ function App() {
                 />
               }
             />
-          </Routes> */}
-          <TextForm
-                  text="here is your text"
-                  heading="Enter the Text to analyse"
-                  textSummary="Your Text Summary"
-                  mode={mode}
-                  blindMode={blindMode}
-                  capitalize={capitalize}
-                  alert={alert}
-                  showAlert={showAlert}
-                  toogleBlindMode={toogleBlindMode}
-                />
+          </Routes>
         </div>
-      {/* </Router> */}
+      </Router>
     </>
   );
 }

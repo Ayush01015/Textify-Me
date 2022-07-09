@@ -1,6 +1,6 @@
 import React from "react";
 import Proptypes from "prop-types";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function Navbar(props) {
   return (
@@ -8,12 +8,12 @@ export default function Navbar(props) {
       className={`navbar navbar-expand-lg navbar-${props.blindMode==="blindOn"?"blind":props.mode==="dark"?"dark" :"light"}` }
     >
       <div className="container-fluid">
-        {/* <Link className="navbar-brand" to="/">
+        <Link className="navbar-brand" to="/">
           {props.title}
-        </Link> */}
-        <a className="navbar-brand" href="/home">
+        </Link>
+        {/* <a className="navbar-brand" href="/">
           {props.title}
-        </a>
+        </a> */}
         <button
           className="navbar-toggler"
           type="button"
@@ -28,17 +28,17 @@ export default function Navbar(props) {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              {/* <Link className="nav-link active clr" aria-current="page" to="/">
+              <Link className="nav-link active clr" aria-current="page" to="/">
                 Home
-              </Link> */}
-              <a className="nav-link active clr" aria-current="page" href="/home">
+              </Link>
+              {/* <a className="nav-link active clr" aria-current="page" href="/home">
                 Home
-              </a>
+              </a> */}
             </li>
             <li className="nav-item">
-              {/* <Link className="nav-link" to="/about">
+              <Link className="nav-link" to="/about">
                 {props.aboutText}
-              </Link> */}
+              </Link>
               {/* <a className="nav-link" from="/about">  
                 {props.aboutText}
               </a> */}
@@ -86,6 +86,7 @@ export default function Navbar(props) {
         </div>
       </div>
     </nav>
+
   );
 }
 

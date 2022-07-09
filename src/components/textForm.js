@@ -76,35 +76,35 @@ export default function TextForm(props) {
             <button
               type="button"
               onClick={handleUpClick}
-              className={`btn btn-${props.blindMode==="blindOn"?"warning":"primary"} my-2 my-btn`}
+              className={`btn btn-${props.blindMode==="blindOn"?"warning":"primary"} my-2 my-1 my-btn`}
             >
               Convert to UpperCase
             </button>
             <button
               type="button"
               onClick={handleLowClick}
-              className={`btn btn-${props.blindMode==="blindOn"?"warning":"primary"} my-2 my-btn`}
+              className={`btn btn-${props.blindMode==="blindOn"?"warning":"primary"} my-2 my-1 my-btn`}
             >
               Convert to LowerCase
             </button>
             <button
               type="button"
               onClick={handleOnClear}
-              className={`btn btn-${props.blindMode==="blindOn"?"warning":"primary"} my-2 my-btn`}
+              className={`btn btn-${props.blindMode==="blindOn"?"warning":"primary"} my-2 my-1 my-btn`}
             >
               Clear Text
             </button>
             <button
               type="button"
               onClick={handleOnCopy}
-              className={`btn btn-${props.blindMode==="blindOn"?"warning":"primary"} my-2 my-btn`}
+              className={`btn btn-${props.blindMode==="blindOn"?"warning":"primary"} my-2 my-1 my-btn`}
             >
               Copy Text
             </button>
             <button
               type="button"
               onClick={handleOnExtraScapes}
-              className={`btn btn-${props.blindMode==="blindOn"?"warning":"primary"} my-2 my-btn`}
+              className={`btn btn-${props.blindMode==="blindOn"?"warning":"primary"} my-2 my-1 my-btn`}
             >
               Remove Extra Spaces
             </button>
@@ -131,7 +131,7 @@ export default function TextForm(props) {
                   : "black"
             }}
           >
-            {`${text.split(" ").filter((ele)=>{return ele.length!=0}).length} Words & ${text.length} Characters` }
+            {`${text.split(" ").filter((ele)=>{return ele.length!==0}).length} Words & ${text.length} Characters` }
           </p>  
           <p
             style={{
@@ -145,7 +145,7 @@ export default function TextForm(props) {
                 : "black"
           }}  
           >
-            {0.008 * text.split(" ").length} Minutes Read
+            {0.008 * text.split(" ").filter((ele)=>{return ele.length!==0}).length} Minutes Read
           </p>
           <h2 className="gradient-text">Preview</h2>
           <div

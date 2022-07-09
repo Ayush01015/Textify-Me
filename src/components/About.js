@@ -1,40 +1,60 @@
 import React,{useState} from "react";
 
-export default function About() {
-    
-    const [myStyle,setMyStyle]=useState({
-        color:"black",
-        backgroundColor: "white",
-    })
+export default function About(props) {
+const [blindMode, setBlindMode] = useState("blindOff");
 
-    const [btnTxt,setBtnText]=useState("Dark Mode");
-    
-    const toggleStyle=()=>{
-        if(myStyle.color==="white")
-        {
-          {
-            setMyStyle({
-                color:'black',
-                backgroundColor:'white',
-                border:"0.6px solid white"        
-            })
-          }
-            setBtnText("Dark Mode")
-        }
-        else{
-            setMyStyle({
-                color:'white',
-                backgroundColor:'black'
-            })
-            setBtnText("Light Mode")
-        }
-    }
-
-
+ let myStyle={
+    backgroundColor:
+    props.blindMode==="blindOn"
+      ? "#FF1700"
+      : props.mode==="light"
+      ? "#F5EDDC"
+      :props.mode==="dark"
+      ? "#1B2430"
+      : "white"
+      ,
+      color:
+      props.blindMode==="blindOn"
+        ? "#FBFF00"
+        : props.mode==="light"
+        ? "black"
+        :props.mode==="dark"
+        ? "white"
+        : "black"
+ }
     return (
     <div className="my-5">
-      <h2>About Us</h2>
-      <div className="accordion my-3" id="accordionExample" >
+      <h2
+      style={{
+          color:
+          props.blindMode==="blindOn"
+            ? "#FBFF00"
+            : props.mode==="light"
+            ? "black"
+            :props.mode==="dark"
+            ? "white"
+            : "black"
+      }}
+      >About Us</h2>
+      <div className="accordion my-3" id="accordionExample" style={{
+              backgroundColor:
+              props.blindMode==="blindOn"
+                ? "#FF1700"
+                : props.mode==="light"
+                ? "#F5EDDC"
+                :props.mode==="dark"
+                ? "#1B2430"
+                : "white"
+                ,
+                color:
+                props.blindMode==="blindOn"
+                  ? "#FBFF00"
+                  : props.mode==="light"
+                  ? "black"
+                  :props.mode==="dark"
+                  ? "white"
+                  : "black"
+            }}>
         <div className="accordion-item" style={myStyle}>
           <h2 className="accordion-header" id="headingOne">
             <button style={myStyle}
@@ -129,9 +149,6 @@ export default function About() {
           </div>
         </div>
       </div>
-      <button onClick={toggleStyle} type="button" className="btn btn-dark btn-w my-4" >
-       {btnTxt}
-      </button>
     </div>
   );
 }
