@@ -70,9 +70,19 @@ function App() {
         <Alert alert={alert} capitalize={capitalize} />
         <div className="container">
           <Routes>
-            <Route exact path="/about" element={<About mode={mode} blindMode={blindMode} toogleBlindMode={toogleBlindMode}/>} />
             <Route
-              exact
+              
+              path="/about"
+              element={
+                <About
+                  mode={mode}
+                  blindMode={blindMode}
+                  toogleBlindMode={toogleBlindMode}
+                />
+              }
+            />
+            <Route
+              
               path="/"
               element={
                 <TextForm
